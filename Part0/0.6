@@ -1,0 +1,38 @@
+sequenceDiagram
+    participant User
+    participant Browser
+    participant Server
+    
+
+    Browser->>Server: GET /spa
+    activate Server
+    Server-->>Browser: HTML document
+    deactivate Server
+
+    Browser->>Server: GET /main.css
+    activate Server
+    Server-->>Browser: CSS file
+    deactivate Server
+
+    Browser->>Server: GET /main.js
+    activate Server
+    Server-->>Browser: JavaScript file
+    deactivate Server
+
+    Browser-->>Browser: Execute main.js
+
+    Browser->>Server: GET /data.json (AJAX)
+    activate Server
+    Server-->>Browser: JSON data (notes)
+    deactivate Server
+
+    Browser-->>Browser: Render notes using JS
+
+    User->>Browser: Click "Save" after writing a note
+    Browser-->>Browser: JS intercepts form submit
+    Browser->>Server: POST /new_note_spa with note (JSON)
+    activate Server
+    Server-->>Browser: 201 Created (confirmation)
+    deactivate Server
+    Browser-->>Browser: Update DOM with new note
+
