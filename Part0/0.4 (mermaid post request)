@@ -1,0 +1,12 @@
+
+sequenceDiagram
+    participant User
+    participant Browser
+    participant Server
+
+    User->>Browser: Click "Save" with note content
+    Browser->>Server: POST /new_note with form data to https://studies.cs.helsinki.fi/exampleapp/notes
+    Server-->>Browser: 302 Redirect (to /notes)
+    Browser->>Server: GET /https://studies.cs.helsinki.fi/exampleapp/notes
+    Server-->>Browser: HTML page with updated notes
+    Browser-->>User: Display the updated page
