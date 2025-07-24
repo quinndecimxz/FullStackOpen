@@ -1,0 +1,27 @@
+sequenceDiagram
+    participant Browser
+    participant Server
+
+    Browser->>Server: GET /spa
+    activate Server
+    Server-->>Browser: HTML document
+    deactivate Server
+
+    Browser->>Server: GET /main.css
+    activate Server
+    Server-->>Browser: CSS file
+    deactivate Server
+
+    Browser->>Server: GET /main.js
+    activate Server
+    Server-->>Browser: JavaScript file
+    deactivate Server
+
+    Browser-->>Browser: Execute main.js
+
+    Browser->>Server: GET /data.json (AJAX)
+    activate Server
+    Server-->>Browser: JSON data (notes)
+    deactivate Server
+
+    Browser-->>Browser: Render notes using JS
