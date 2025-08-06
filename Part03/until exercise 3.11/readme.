@@ -1,0 +1,2 @@
+This directory contains the backend url for the file hosted on Railway. The Production build ,backend and other files are hosted in a seperate repository since it was supposed to be hosted and kept seperate from the fullstackopen repository as per instructions
+this is the link for that repository : https://github.com/quinndecimxz/Backend_Express
